@@ -6,7 +6,9 @@
   <div class="content-container">
     <form action="{{ url_for('result') }}" method="post">
       <h2>Input connotes:</h2>
-      <input type="text" class="name-input name mb-3" id="name" name="name">
+      <!-- <input type="textarea" class="name-input name mb-3" id="name" name="name"> -->
+      <textarea rows="rows" cols="cols"name="name">
+      </textarea>
       <input class="btn btn-outline-primary" type="submit" value="Submit">
     </form>
   </div>

@@ -1,11 +1,57 @@
 {% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<script type="text/javascript" src="downloadFile.js"></script>
 <title>Result Page</title>
+<style>
+  h1 {
+    text-align: center;
+  }
+  .table {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+  }
+</style>
 {% endblock %}
 {% block body %}
-
+<h1>OMNI BULK TRACKING PAGE</h1>
   <div class="content-container">
-    <!-- <h2>{{ name }}</h2> -->
-    {{name}}
+    <!-- <ol> -->
+      <table style="width:80%" class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>No.</th>
+            <th>Tracking</th>
+            <th>Date</th>
+            <th>Update</th>
+            <th>Location</th>
+            <th>Carrier</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(0, len)%}
+          <tr>
+            <td>{{i+1}}</td>
+            <td>{{name[0][i]}}</td>
+            <td>{{name[1][i]}}</td>
+            <td>{{name[2][i]}}</td>
+            <td>{{name[3][i]}}</td>
+            <td>{{name[4][i]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+        <tfoot>
+          <tr>
+            <button>
+              <span class="glyphicon glyphicon-download"></span>
+              Download list
+            </button>
+          </tr>
+        </tfoot>  
+      </table>
   </div>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
 {% endblock %}
+
