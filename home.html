@@ -1,0 +1,14 @@
+{% block head %}
+<title>Tracking Page</title>
+{% endblock %}
+{% block body %}
+
+  <div class="content-container">
+    <form action="{{ url_for('result') }}" method="post">
+      <h2>Input connotes:</h2>
+      <input type="text" class="name-input name mb-3" id="name" name="name">
+      <input class="btn btn-outline-primary" type="submit" value="Submit">
+    </form>
+  </div>
+
+{% endblock %}
