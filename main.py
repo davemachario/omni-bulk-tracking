@@ -1,3 +1,4 @@
+from operator import index
 from unicodedata import name
 from flask import Flask, render_template, request, url_for, redirect
 from __main__ import *
@@ -15,12 +16,11 @@ def home():
 
 @app.route("/result", methods=['GET', 'POST'])
 def result():
-    name = request.form.get('name')
-
-    def bulk_track(name):
-
-        ## Input Connotes from home
-        connotes = [str(x) for x in name.split()]
+    name = request.form['name']
+    print(type(name))
+    ## Input Connotes from home
+    connotes = [str(x) for x in name.splitlines()]
+    def bulk_track(connotes):
 
         ## Process Connote to be URL
         url = []
@@ -39,12 +39,19 @@ def result():
         import pyperclip
         import pandas as pd
         import math
+        from tabulate import tabulate
 
         pd.set_option('display.max_colwidth', None)
 
         #scrape elements
         i = 0
         df = []
+        tracking_number = []
+        latest_date = []
+        update = []
+        location = []
+        carrier = []
+
         while i < len(url):
             response = requests.get(url[i])
             soup = BeautifulSoup(response.content, "html.parser")
@@ -73,20 +80,20 @@ def result():
 
             for x in data:
                 tracking = x
-            
-            # Printing end result
-            print(data[0], "\n",
-                "Latest date: ", date.to_string(index=False), "\n" ,
-                "Latest update: ", df[i]['Activity'].iloc[-4:-3].to_string(index=False), "\n",
-                "Last Location", df[i]['Location'].iloc[-4:-3].to_string(index=False), "\n",
-                "Carrier:", df[i]['Carrier'].iloc[-4:-3].to_string(index=False), "\n")
-            
-            # return "all executed well"
+
+            tracking_number.append(data[0])
+            latest_date.append(date.to_string(index=False))
+            update.append(df[i]['Activity'].iloc[-4:-3].to_string(index=False))
+            location.append(df[i]['Location'].iloc[-4:-3].to_string(index=False))
+            carrier.append(df[i]['Carrier'].iloc[-4:-3].to_string(index=False))
 
             i+=1
 
-    return render_template("result.html", name=bulk_track(name))
+        return tracking_number, latest_date, update, location, carrier
+
+
+    return render_template("result.html", len = len(connotes), name=bulk_track(connotes))
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(use_reloader = True, debug=True)
