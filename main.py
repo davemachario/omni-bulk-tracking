@@ -11,7 +11,7 @@ def home():
     if request.method == 'POST':
         name = request.form["name"]
         return redirect(url_for('result', name=name))
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 @app.route("/result", methods=['GET', 'POST'])
