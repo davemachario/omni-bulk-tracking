@@ -18,7 +18,7 @@
 <h1>OMNI BULK TRACKING PAGE</h1>
   <div class="content-container">
     <!-- <ol> -->
-      <table style="width:80%" class="table table-striped">
+      <table id = "datatable" style="width:80%" class="table table-striped">
         <thead class="thead-dark">
           <tr>
             <th>No.</th>
@@ -41,17 +41,17 @@
           </tr>
           {%endfor%}
         </tbody>
-        <tfoot>
-          <tr>
-            <button>
-              <span class="glyphicon glyphicon-download"></span>
-              Download list
-            </button>
-          </tr>
-        </tfoot>  
       </table>
   </div>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/excellentexport@3.4.3/dist/excellentexport.min.js"></script>
+    <a download="somedata.xls"
+      href="#"
+      onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">
+        Export table to Excel</a>
+  </div>
+  
   
 {% endblock %}
 
