@@ -5,11 +5,12 @@
 
   <div class="content-container">
     <form action="{{ url_for('result') }}" method="post">
-      <h2>Input connotes:</h2>
+      <h2>Input connotes separated by new lines (max. 40 connotes per one run):</h2>
       <!-- <input type="textarea" class="name-input name mb-3" id="name" name="name"> -->
       <textarea rows="rows" cols="cols"name="name">
       </textarea>
       <input class="btn btn-outline-primary" type="submit" value="Submit">
+      <body>Please note that if the there are "Internal Server Error" message, that means one of the connotes ae not available in the system. Thanks :)</body>
     </form>
   </div>
 
