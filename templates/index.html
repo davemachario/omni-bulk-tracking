@@ -5,13 +5,19 @@
 
   <div class="content-container">
     <form action="{{ url_for('result') }}" method="post">
-      <h2>Input connotes separated by new lines (max. 40 connotes per one run):</h2>
+      <h2>
+        Input connotes: 
+        <br><h5>NOTE: Please separate each connotes by new lines (max. 40 connotes per one run)</h5>
+      </h2>
       <!-- <input type="textarea" class="name-input name mb-3" id="name" name="name"> -->
       <textarea rows="rows" cols="cols"name="name">
       </textarea>
       <input class="btn btn-outline-primary" type="submit" value="Submit">
       <br><br>
-      <body>Please note that if the there are "Internal Server Error" message, that means one of the connotes ae not available in the system. Thanks :)</body>
+      <body>
+        Please note that if there are "Internal Server Error" message, that means one of the connotes are not available in the system. Thanks :)
+        <br> Should you have any questions, feel free to contact dave.machario@sekologistics.com
+      </body>
     </form>
   </div>
 
