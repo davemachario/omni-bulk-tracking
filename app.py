@@ -83,9 +83,9 @@ def result():
 
             tracking_number.append(data[0])
             latest_date.append(date.to_string(index=False))
-            update.append(df[i]['Activity'].iloc[-4:-3].to_string(index=False))
-            location.append(df[i]['Location'].iloc[-4:-3].to_string(index=False))
-            carrier.append(df[i]['Carrier'].iloc[-4:-3].to_string(index=False))
+            update.append(df[i]['Activity'].iloc[-3:-2].to_string(index=False))
+            location.append(df[i]['Location'].iloc[-3:-2].to_string(index=False))
+            carrier.append(df[i]['Carrier'].iloc[-3:-2].to_string(index=False))
 
             i+=1
 
